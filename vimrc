@@ -11,4 +11,5 @@ set wildmenu
 set showmatch
 set hlsearch
 let mapleader="," 
+"https://dougblack.io/words/a-good-vimrc.html"
 nnoremap <leader><space> :nohlsearch<CR>
