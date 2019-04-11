@@ -20,6 +20,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>p :pc<CR>
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set foldmethod=syntax " https://vim.fandom.com/wiki/Folding
+" https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
+au BufWinEnter * normal zR 
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
