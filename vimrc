@@ -16,6 +16,8 @@ let g:ycm_use_clangd = 0
 let mapleader="," 
 "https://dougblack.io/words/a-good-vimrc.html"
 nnoremap <leader><space> :nohlsearch<CR>
+" close preview"
+nnoremap <leader>p :pc<CR>
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
