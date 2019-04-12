@@ -23,6 +23,11 @@ filetype off                  " required
 set foldmethod=syntax " https://vim.fandom.com/wiki/Folding
 " https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
 au BufWinEnter * normal zR 
+" https://stackoverflow.com/questions/597687/changing-variable-names-in-vim
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
