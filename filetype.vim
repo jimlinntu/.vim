@@ -5,5 +5,8 @@ if exists("did_load_filetypes")
 endif
 augroup filetypedetect
   au! BufRead,BufNewFile *.flex setfiletype lex
+  " OpenCL https://www.vim.org/scripts/script.php?script_id=3157
+  au BufNewFile,BufRead *.cl setf opencl
 augroup END
+
 
