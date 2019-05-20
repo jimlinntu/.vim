@@ -11,6 +11,9 @@ set wildmenu
 set showmatch
 set hlsearch
 set shiftwidth=4 "https://vi.stackexchange.com/questions/7975/how-can-i-change-the-indent-size"
+" Enable backspace feature
+" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+set backspace=indent,eol,start
 "https://github.com/Valloric/YouCompleteMe#c-family-semantic-completion"
 let g:ycm_use_clangd = 0 
 let mapleader="," 
