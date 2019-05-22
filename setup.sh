@@ -13,3 +13,4 @@ read confirm
 if [[ $confirm == 'y' ]]; then
     echo -e 'export VISUAL=vim\nexport EDITOR="$VISUAL"' >> ~/.bashrc
 fi
+echo '[*] Remember to source ~/.bashrc before you do next things!'
