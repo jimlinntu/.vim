@@ -80,4 +80,36 @@ filetype plugin indent on    " required
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py.1'
 let g:ycm_confirm_extra_conf = 0
 
+" tabline setting(see :h setting-tabline)
+" https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim
+fu! MyTabLabel(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+    return empty(string) ? '[unnamed]' : string
+endfu
+fu! MyTabLine()
+let s = ''
+for i in range(tabpagenr('$'))
+" select the highlighting
+    if i + 1 == tabpagenr()
+    let s .= '%#TabLineSel#'
+    else
+    let s .= '%#TabLine#'
+    endif
 
+    " set the tab page number (for mouse clicks)
+    "let s .= '%' . (i + 1) . 'T'
+    " display tabnumber (for use with <count>gt, etc)
+    let s .= ' '. (i+1) . ' ' 
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+
+    if i+1 < tabpagenr('$')
+        let s .= ' |'
+    endif
+endfor
+return s
+endfu
+set tabline=%!MyTabLine()
