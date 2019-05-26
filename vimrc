@@ -144,4 +144,3 @@ fu! MyTabLine()
     return s
 endfu
 set tabline=%!MyTabLine()
-set tabline=%!MyTabLine()
