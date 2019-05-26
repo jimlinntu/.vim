@@ -81,35 +81,67 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.p
 let g:ycm_confirm_extra_conf = 0
 
 " tabline setting(see :h setting-tabline)
-" https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim
+" https://stackoverflow.com/questions/11366390/how-to-enumerate-tabs-in-vim
+
 fu! MyTabLabel(n)
     let buflist = tabpagebuflist(a:n)
     let winnr = tabpagewinnr(a:n)
     let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
     return empty(string) ? '[unnamed]' : string
 endfu
+
 fu! MyTabLine()
-let s = ''
-for i in range(tabpagenr('$'))
-" select the highlighting
-    if i + 1 == tabpagenr()
-    let s .= '%#TabLineSel#'
-    else
-    let s .= '%#TabLine#'
-    endif
+    let s = ''
+    for i in range(tabpagenr('$'))
+    " select the highlighting
+        " get buffer names and statuses (from https://stackoverflow.com/a/17416477 answers code)
+        let n = ''      "temp string for buffer names while we loop and check buftype
+        let m = 0       " &modified counter
+        let bc = len(tabpagebuflist(i + 1))     "counter to avoid last ' '
+        " loop through each buffer in a tab
+        for b in tabpagebuflist(i + 1)
+                " buffer types: quickfix gets a [Q], help gets [H]{base fname}
+                " others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
+                if getbufvar( b, "&buftype" ) == 'help'
+                        let n .= '[H]' . fnamemodify( bufname(b), ':t:s/.txt$//' )
+                elseif getbufvar( b, "&buftype" ) == 'quickfix'
+                        let n .= '[Q]'
+                else
+                        let n .= pathshorten(bufname(b))
+                endif
+                " check and ++ tab's &modified count
+                if getbufvar( b, "&modified" )
+                        let m += 1
+                endif
+                " no final ' ' added...formatting looks better done later
+                if bc > 1
+                        let n .= ' '
+                endif
+                let bc -= 1
+        endfor
+        if i + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+        " add modified label [n+] where n pages in tab are modified
+        if m > 0
+                let s .= '[' . m . '+]'
+        endif
 
-    " set the tab page number (for mouse clicks)
-    "let s .= '%' . (i + 1) . 'T'
-    " display tabnumber (for use with <count>gt, etc)
-    let s .= ' '. (i+1) . ' ' 
+        " set the tab page number (for mouse clicks)
+        "let s .= '%' . (i + 1) . 'T'
+        " display tabnumber (for use with <count>gt, etc)
+        let s .= ' '. (i+1) . ' ' 
 
-    " the label is made by MyTabLabel()
-    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+        " the label is made by MyTabLabel()
+        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
 
-    if i+1 < tabpagenr('$')
-        let s .= ' |'
-    endif
-endfor
-return s
+        if i+1 < tabpagenr('$')
+            let s .= ' |'
+        endif
+    endfor
+    return s
 endfu
+set tabline=%!MyTabLine()
 set tabline=%!MyTabLine()
