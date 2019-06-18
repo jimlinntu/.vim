@@ -35,6 +35,8 @@ au BufWinEnter * normal zR
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+" https://shapeshed.com/vim-netrw/
+let g:netrw_liststyle = 3
 
 filetype plugin indent on    " required
 
