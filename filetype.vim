@@ -7,6 +7,8 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.flex setfiletype lex
   " OpenCL https://www.vim.org/scripts/script.php?script_id=3157
   au BufNewFile,BufRead *.cl setf opencl
+  " Ejs syntax support : https://stackoverflow.com/questions/4597721/syntax-highlight-for-ejs-files-in-vim
+  au BufNewFile,BufRead *.ejs set filetype=html
 augroup END
 
 
