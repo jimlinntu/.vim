@@ -1,6 +1,7 @@
 syntax enable
 "Color scheme"
 colorscheme monokai
+" Set related configurations
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -11,6 +12,7 @@ set wildmenu
 set showmatch
 set hlsearch
 set shiftwidth=4 "https://vi.stackexchange.com/questions/7975/how-can-i-change-the-indent-size"
+set nofixendofline
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
