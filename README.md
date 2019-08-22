@@ -15,7 +15,7 @@ git clone https://github.com/jimlinntu/.vim ~/.vim
 
 * (on `master` branch) Rename the `bundle/YouCompleteMe`
 ```
-mv YouCompleteMe/ YouCompleteMe-bak/
+mv ~/.vim/bundle/YouCompleteMe/ ~/.vim/bundle/YouCompleteMe-bak/
 ```
 
 * (on `master` branch) Clone the YouCompleteMe repository and move the file inside `bundle/YouCompleteMe-bak`
@@ -37,6 +37,7 @@ vim +PluginInstall +qall
 ```
 * (on `master` branch) run `install.py` in the YouCompleteMe folder
 ```
+cd ~/.vim/bundle/YouCompleteMe
 python3 ./install.py --clang-completer
 ```
 
