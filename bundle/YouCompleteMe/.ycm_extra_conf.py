@@ -41,6 +41,18 @@ SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
+
+if platform.system() == "Linux":
+    # https://stackoverflow.com/questions/11887762/how-do-i-compare-version-numbers-in-python
+    from pkg_resources import parse_version
+    cpp_header_version = None
+    for ver in os.listdir("/usr/include/c++"):
+        if cpp_header_version is None:
+            cpp_header_version = ver
+        else:
+            if parse_version(cpp_header_version) < parse_version(ver):
+                cpp_header_version = ver
+
 flags = [
 '-Wall',
 '-Wextra',
@@ -60,11 +72,9 @@ flags = [
 '-x',
 'c++',
 '-isystem',
-'/usr/include/c++/7.3.0/',
+os.path.join('/usr/include/c++', cpp_header_version),
 '-isystem',
-'/usr/include/c++/7.3.0/',
-'-isystem',
-'/usr/include/c++/7.3.0/backward/',
+os.path.join(os.path.join('/usr/include/c++', cpp_header_version), 'backward'),
 '-isystem',
 '/usr/local/include/',
 '-isystem',
