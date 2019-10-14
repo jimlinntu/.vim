@@ -12,6 +12,7 @@ set showmatch
 set hlsearch
 set shiftwidth=4 "https://vi.stackexchange.com/questions/7975/how-can-i-change-the-indent-size"
 set nofixendofline
+set number " show the current line's number
 set relativenumber " As https://www.youtube.com/watch?v=wlR5gYd6um0 suggests
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
