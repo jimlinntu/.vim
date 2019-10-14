@@ -5,7 +5,6 @@ colorscheme monokai
 set tabstop=4
 set softtabstop=4
 set expandtab
-set number
 set path+=**
 set cursorline
 set wildmenu
@@ -13,6 +12,7 @@ set showmatch
 set hlsearch
 set shiftwidth=4 "https://vi.stackexchange.com/questions/7975/how-can-i-change-the-indent-size"
 set nofixendofline
+set relativenumber " As https://www.youtube.com/watch?v=wlR5gYd6um0 suggests
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
