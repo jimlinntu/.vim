@@ -59,6 +59,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'christoomey/vim-system-copy'
+Plugin 'Yggdroot/indentLine'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -158,3 +159,10 @@ fu! MyTabLine()
     return s
 endfu
 set tabline=%!MyTabLine()
+
+" Preserve the buffer position when switching them
+" https://stackoverflow.com/questions/4251533/vim-keep-window-position-when-switching-buffers
+if v:version >= 700
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
