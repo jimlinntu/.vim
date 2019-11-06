@@ -166,3 +166,8 @@ if v:version >= 700
   au BufLeave * let b:winview = winsaveview()
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
+
+" https://github.com/Yggdroot/indentLine color customization
+"let g:indentLine_setColors = 0
+let g:indentLine_color_term = 239
+let g:indentLine_char = '|'
