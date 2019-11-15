@@ -77,6 +77,11 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
 "For git changes highlighting "
 Plugin 'airblade/vim-gitgutter' 
+
+" Vim minimap (like sublime)
+Plugin 'severin-lemaignan/vim-minimap'
+" NERD tree
+Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -171,3 +176,5 @@ endif
 "let g:indentLine_setColors = 0
 let g:indentLine_color_term = 239
 let g:indentLine_char = '|'
+" Git Gutter
+let g:gitgutter_max_signs = 3000
