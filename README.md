@@ -20,8 +20,8 @@ mv ~/.vim/bundle/YouCompleteMe/ ~/.vim/bundle/YouCompleteMe-bak/
 
 * (on `master` branch) Clone the YouCompleteMe repository and move the file inside `bundle/YouCompleteMe-bak`
 ```
-git clone https://github.com/ycm-core/YouCompleteMe ~/.vim/YouCompleteMe
-mv ~/.vim/bundle/YouCompleteMe-bak/.ycm_extra_conf.py.1 ~/.vim/bundle/YouCompleteMe
+git clone https://github.com/ycm-core/YouCompleteMe ~/.vim/bundle/YouCompleteMe
+mv ~/.vim/bundle/YouCompleteMe-bak/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe
 ```
 
 * (on `master` branch) Update the YouCompleteMe repository's submodule
