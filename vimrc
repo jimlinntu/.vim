@@ -17,6 +17,8 @@ set relativenumber " As https://www.youtube.com/watch?v=wlR5gYd6um0 suggests
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
+" ctags (from https://www.youtube.com/watch?v=XA2WjJbmmoM&feature=youtu.be&t=937)
+command! MakeTags !ctags -R .
 " Enable backspace feature
 " https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
 set backspace=indent,eol,start
