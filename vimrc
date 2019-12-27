@@ -180,3 +180,6 @@ let g:indentLine_color_term = 239
 let g:indentLine_char = '|'
 " Git Gutter
 let g:gitgutter_max_signs = 3000
+" Code Snippets
+nnoremap <leader>py :-1read $HOME/.vim/snippets/.python-main.py<CR>jwzR
+nnoremap <leader>cc :-1read $HOME/.vim/snippets/.cpp-main.cc<CR>3jzR
