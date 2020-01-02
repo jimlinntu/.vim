@@ -183,4 +183,5 @@ let g:indentLine_char = '|'
 let g:gitgutter_max_signs = 3000
 " Code Snippets
 nnoremap <leader>py :-1read $HOME/.vim/snippets/.python-main.py<CR>jwzR
+nnoremap <leader>pyc :-1read $HOME/.vim/snippets/.python-class.py<CR>w
 nnoremap <leader>cc :-1read $HOME/.vim/snippets/.cpp-main.cc<CR>3jzR
