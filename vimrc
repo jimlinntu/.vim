@@ -2,6 +2,7 @@ syntax enable
 "Color scheme"
 colorscheme monokai
 " Set related configurations
+set shortmess+=c "https://stackoverflow.com/questions/19580157/to-hide-user-defined-completion-message-at-vim
 set tabstop=4
 set softtabstop=4
 set expandtab
