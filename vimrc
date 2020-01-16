@@ -15,6 +15,7 @@ set shiftwidth=4 "https://vi.stackexchange.com/questions/7975/how-can-i-change-t
 set nofixendofline
 set number " show the current line's number
 set relativenumber " As https://www.youtube.com/watch?v=wlR5gYd6um0 suggests
+set hidden "allow unsaved hidden buffers"
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
@@ -85,6 +86,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'severin-lemaignan/vim-minimap'
 " NERD tree
 Plugin 'scrooloose/nerdtree'
+" Vim powerline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,67 +110,67 @@ let g:ycm_confirm_extra_conf = 0
 " tabline setting(see :h setting-tabline)
 " https://stackoverflow.com/questions/11366390/how-to-enumerate-tabs-in-vim
 
-fu! MyTabLabel(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
-    return empty(string) ? '[unnamed]' : string
-endfu
+"fu! MyTabLabel(n)
+"    let buflist = tabpagebuflist(a:n)
+"    let winnr = tabpagewinnr(a:n)
+"    let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+"    return empty(string) ? '[unnamed]' : string
+"endfu
 
-fu! MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-    " select the highlighting
-        " get buffer names and statuses (from https://stackoverflow.com/a/17416477 answers code)
-        let n = ''      "temp string for buffer names while we loop and check buftype
-        let m = 0       " &modified counter
-        let bc = len(tabpagebuflist(i + 1))     "counter to avoid last ' '
-        " loop through each buffer in a tab
-        for b in tabpagebuflist(i + 1)
-                " buffer types: quickfix gets a [Q], help gets [H]{base fname}
-                " others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
-                if getbufvar( b, "&buftype" ) == 'help'
-                        let n .= '[H]' . fnamemodify( bufname(b), ':t:s/.txt$//' )
-                elseif getbufvar( b, "&buftype" ) == 'quickfix'
-                        let n .= '[Q]'
-                else
-                        let n .= pathshorten(bufname(b))
-                endif
-                " check and ++ tab's &modified count
-                if getbufvar( b, "&modified" )
-                        let m += 1
-                endif
-                " no final ' ' added...formatting looks better done later
-                if bc > 1
-                        let n .= ' '
-                endif
-                let bc -= 1
-        endfor
-        if i + 1 == tabpagenr()
-            let s .= '%#TabLineSel#'
-        else
-            let s .= '%#TabLine#'
-        endif
-        " add modified label [n+] where n pages in tab are modified
-        if m > 0
-                let s .= '[' . m . '+]'
-        endif
+"fu! MyTabLine()
+"    let s = ''
+"    for i in range(tabpagenr('$'))
+"    " select the highlighting
+"        " get buffer names and statuses (from https://stackoverflow.com/a/17416477 answers code)
+"        let n = ''      "temp string for buffer names while we loop and check buftype
+"        let m = 0       " &modified counter
+"        let bc = len(tabpagebuflist(i + 1))     "counter to avoid last ' '
+"        " loop through each buffer in a tab
+"        for b in tabpagebuflist(i + 1)
+"                " buffer types: quickfix gets a [Q], help gets [H]{base fname}
+"                " others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
+"                if getbufvar( b, "&buftype" ) == 'help'
+"                        let n .= '[H]' . fnamemodify( bufname(b), ':t:s/.txt$//' )
+"                elseif getbufvar( b, "&buftype" ) == 'quickfix'
+"                        let n .= '[Q]'
+"                else
+"                        let n .= pathshorten(bufname(b))
+"                endif
+"                " check and ++ tab's &modified count
+"                if getbufvar( b, "&modified" )
+"                        let m += 1
+"                endif
+"                " no final ' ' added...formatting looks better done later
+"                if bc > 1
+"                        let n .= ' '
+"                endif
+"                let bc -= 1
+"        endfor
+"        if i + 1 == tabpagenr()
+"            let s .= '%#TabLineSel#'
+"        else
+"            let s .= '%#TabLine#'
+"        endif
+"        " add modified label [n+] where n pages in tab are modified
+"        if m > 0
+"                let s .= '[' . m . '+]'
+"        endif
 
-        " set the tab page number (for mouse clicks)
-        "let s .= '%' . (i + 1) . 'T'
-        " display tabnumber (for use with <count>gt, etc)
-        let s .= ' '. (i+1) . ' ' 
+"        " set the tab page number (for mouse clicks)
+"        "let s .= '%' . (i + 1) . 'T'
+"        " display tabnumber (for use with <count>gt, etc)
+"        let s .= ' '. (i+1) . ' ' 
 
-        " the label is made by MyTabLabel()
-        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+"        " the label is made by MyTabLabel()
+"        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
 
-        if i+1 < tabpagenr('$')
-            let s .= ' |'
-        endif
-    endfor
-    return s
-endfu
-set tabline=%!MyTabLine()
+"        if i+1 < tabpagenr('$')
+"            let s .= ' |'
+"        endif
+"    endfor
+"    return s
+"endfu
+"set tabline=%!MyTabLine()
 
 " Preserve the buffer position when switching them
 " https://stackoverflow.com/questions/4251533/vim-keep-window-position-when-switching-buffers
@@ -185,3 +189,9 @@ let g:gitgutter_max_signs = 3000
 nnoremap <leader>py :-1read $HOME/.vim/snippets/.python-main.py<CR>jwzR
 nnoremap <leader>pyc :-1read $HOME/.vim/snippets/.python-class.py<CR>w
 nnoremap <leader>cc :-1read $HOME/.vim/snippets/.cpp-main.cc<CR>3jzR
+
+" Search related
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
