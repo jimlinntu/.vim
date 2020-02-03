@@ -3,7 +3,7 @@ echo 'Are you going to append `export TERM=screen-256color` at the end of ~/.bas
 echo 'y for yes, n for no'
 read confirm
 if [[ $confirm == 'y' ]]; then
-    echo 'export TERM=screen-256color' >> ~/.bashrc
+    echo 'export TERM=xterm-256color' >> ~/.bashrc
 fi
 
 
