@@ -1,6 +1,5 @@
 syntax enable
 "Color scheme"
-colorscheme monokai
 " Set related configurations
 set shortmess+=c "https://stackoverflow.com/questions/19580157/to-hide-user-defined-completion-message-at-vim
 set tabstop=4
@@ -89,6 +88,8 @@ Plugin 'scrooloose/nerdtree'
 " Vim powerline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Gruvbox
+Plugin 'morhetz/gruvbox'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -104,8 +105,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" ===================== YouComplete related configurations ================
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
+" =========================================================================
 
 " tabline setting(see :h setting-tabline)
 " https://stackoverflow.com/questions/11366390/how-to-enumerate-tabs-in-vim
@@ -195,3 +198,8 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
+" ========================================== gruvbox configurations ===================================
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+colorscheme gruvbox
+" =====================================================================================================
