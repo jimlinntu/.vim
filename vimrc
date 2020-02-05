@@ -90,6 +90,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Gruvbox
 Plugin 'morhetz/gruvbox'
+" " Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -203,3 +207,9 @@ let g:gruvbox_contrast_dark='hard'
 set background=dark
 colorscheme gruvbox
 " =====================================================================================================
+
+" ========================================== UltiSnips configurations =================================
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsListSnippets="<c-k>"
