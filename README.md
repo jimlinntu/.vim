@@ -41,4 +41,9 @@ cd ~/.vim/bundle/YouCompleteMe
 python3 ./install.py --clang-completer
 ```
 
-
+* (on `master` branch) change directory to `~/.vim/doc` and generate tags file. (<https://www.vim.org/scripts/script.php?script_id=273>)
+```
+cd $HOME/.vim/doc
+vim
+:helptags .
+```
