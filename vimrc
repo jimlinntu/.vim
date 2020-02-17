@@ -213,3 +213,13 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsListSnippets="<c-k>"
+
+" ========================================== Language folding configurations =================================
+augroup vimrc
+    " https://vim.fandom.com/wiki/Folding
+    autocmd BufReadPre *.py set foldmethod=indent
+augroup END
+
+" ========================================== Taglist plugin configuretion =================================
+let Tlist_WinWidth=20
+let Tlist_Auto_Open=1
