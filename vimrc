@@ -94,6 +94,8 @@ Plugin 'morhetz/gruvbox'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+" Syntax checker
+Plugin 'vim-syntastic/syntastic'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -223,3 +225,15 @@ augroup END
 " ========================================== Taglist plugin configuretion =================================
 let Tlist_WinWidth=20
 let Tlist_Auto_Open=1
+
+" ========================================== Syntastic plugin configuratoin ===============================
+" Switch between active and passive mode
+nnoremap <leader>stm :SyntasticToggleMode<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
