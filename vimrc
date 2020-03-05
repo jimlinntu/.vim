@@ -225,6 +225,9 @@ augroup END
 " ========================================== Taglist plugin configuretion =================================
 let Tlist_WinWidth=20
 let Tlist_Auto_Open=1
+let Tlist_Use_Right_Window=1
+nnoremap <leader>tlc :TlistClose<CR>
+nnoremap <leader>tlt :TlistToggle<CR>
 
 " ========================================== Syntastic plugin configuratoin ===============================
 " Switch between active and passive mode
