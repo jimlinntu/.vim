@@ -436,7 +436,8 @@ let s:tlist_def_fortran_settings = 'fortran;p:program;b:block data;' .
                     \ 'n:namelist;t:derived;v:variable;f:function;s:subroutine'
 
 " GO language
-let s:tlist_def_go_settings = 'go;f:function;p:package;t:struct'
+" Ref: https://gist.github.com/cridenour/74e7635275331d5afa6b#getting-go-structure-with-ctags
+let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;v:variable;f:function'
 
 " HTML language
 let s:tlist_def_html_settings = 'html;a:anchor;f:function'
