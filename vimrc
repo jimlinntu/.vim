@@ -20,6 +20,8 @@ set hidden "allow unsaved hidden buffers"
 command! W w !sudo tee % > /dev/null
 " ctags (from https://www.youtube.com/watch?v=XA2WjJbmmoM&feature=youtu.be&t=937)
 command! MakeTags !ctags -R .
+" cscope for a specific language: Ex. `:MakeCS py` will make a cscope.out for python script
+command! -nargs=1 MakeCS !find ./ -name '*.<args>'> cscope.files && cscope -Rbqk
 " Enable backspace feature
 " https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
 set backspace=indent,eol,start
