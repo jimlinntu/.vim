@@ -116,6 +116,7 @@ filetype plugin indent on    " required
 " ===================== YouComplete related configurations ================
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_max_diagnostics_to_display = 0 " https://github.com/ycm-core/YouCompleteMe/issues/3156
 " =========================================================================
 
 " tabline setting(see :h setting-tabline)
